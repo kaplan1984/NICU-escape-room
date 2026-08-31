@@ -1,76 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Locked</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: #05080b;
-      color: white;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
+<title>SECURITY LOCK</title>
 
-    .lock {
-      border: 2px solid #444;
-      padding: 40px;
-      width: 300px;
-    }
+<style>
 
-    h1 {
-      letter-spacing: 4px;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    input {
-      width: 180px;
-      padding: 12px;
-      font-size: 30px;
-      text-align: center;
-      letter-spacing: 10px;
-      background: #111;
-      color: white;
-      border: 2px solid #666;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at center, #15191d 0%, #07090b 55%, #000 100%);
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
 
-    button {
-      margin-top: 20px;
-      padding: 12px 30px;
-      font-size: 18px;
-      background: #222;
-      color: white;
-      border: 1px solid #777;
-      cursor: pointer;
-    }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    #message {
-      margin-top: 20px;
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
-  </style>
-</head>
+.lock-panel {
+  width: 92%;
+  max-width: 430px;
 
-<body>
+  background: linear-gradient(145deg, #171b1f, #090b0d);
 
-  <div class="lock">
+  border: 2px solid #343a40;
+  border-radius: 18px;
 
-    <h1>LOCKED</h1>
+  padding: 35px 25px;
 
-    <p>ENTER 4-DIGIT CODE</p>
+  text-align: center;
 
-    <input
-      id="code"
-      type="text"
-      maxlength="4"
-      inputmode="numeric"
-      autocomplete="off"
-    >
+  box-shadow:
+    0 0 40px rgba(0,0,0,0.9),
+    inset 0 0 20px rgba(255,255,255,0.03);
+}
 
-    <br
+.icon {
+  font-size: 45px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 25px;
+  letter-spacing: 5px;
+}
+
+.status {
+  color: #e33434;
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.instruction {
+  color: #aaa;
+  font-size: 13px;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.code-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.digit {
+  width: 58px;
+  height: 70px;
+
+  background: #050607;
+  color: white;
+
+  border: 2px solid #4a4f55;
+  border-radius: 8px;
+
+  font-size: 35px;
+  text-align: center;
+
+  outline: none;
+
+  box-shadow:
