@@ -4,282 +4,182 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SECURITY LOCK</title>
+<title>Security Lock</title>
 
 <style>
-
-* {
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0;
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at center, #15191d 0%, #07090b 55%, #000 100%);
-  font-family: Arial, Helvetica, sans-serif;
-  color: white;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    margin: 0;
+    min-height: 100vh;
+    background: #05080b;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.lock-panel {
-  width: 92%;
-  max-width: 430px;
-
-  background: linear-gradient(145deg, #171b1f, #090b0d);
-
-  border: 2px solid #343a40;
-  border-radius: 18px;
-
-  padding: 35px 25px;
-
-  text-align: center;
-
-  box-shadow:
-    0 0 40px rgba(0,0,0,0.9),
-    inset 0 0 20px rgba(255,255,255,0.03);
+.panel {
+    width: 320px;
+    padding: 35px 25px;
+    background: #11161a;
+    border: 2px solid #444;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 0 30px black;
 }
 
-.icon {
-  font-size: 45px;
-  margin-bottom: 10px;
+.lock-icon {
+    font-size: 45px;
 }
 
 h1 {
-  margin: 0;
-  font-size: 25px;
-  letter-spacing: 5px;
+    letter-spacing: 4px;
+    margin: 15px 0 5px;
 }
 
-.status {
-  color: #e33434;
-  font-size: 12px;
-  letter-spacing: 3px;
-  margin-top: 10px;
-  margin-bottom: 30px;
+.subtitle {
+    color: #e33;
+    letter-spacing: 2px;
+    font-size: 12px;
+    margin-bottom: 30px;
 }
 
-.instruction {
-  color: #aaa;
-  font-size: 13px;
-  letter-spacing: 2px;
-  margin-bottom: 15px;
+.inputs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
-.code-inputs {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
+input {
+    width: 50px;
+    height: 60px;
+    background: #050607;
+    color: white;
+    border: 2px solid #666;
+    border-radius: 7px;
+    font-size: 32px;
+    text-align: center;
 }
 
-.digit {
-  width: 58px;
-  height: 70px;
-
-  background: #050607;
-  color: white;
-
-  border: 2px solid #4a4f55;
-  border-radius: 8px;
-
-  font-size: 35px;
-  text-align: center;
-
-  outline: none;
-
-  box-shadow: inset 0 0 10px #000;
-}
-
-.digit:focus {
-  border-color: #d33232;
-  box-shadow:
-    0 0 8px rgba(255,0,0,.5),
-    inset 0 0 10px #000;
+input:focus {
+    border-color: #e33;
+    outline: none;
 }
 
 button {
-  width: 100%;
-  margin-top: 28px;
-
-  padding: 15px;
-
-  border: 1px solid #9d2626;
-  border-radius: 7px;
-
-  background: #771c1c;
-  color: white;
-
-  font-size: 15px;
-  font-weight: bold;
-  letter-spacing: 4px;
-
-  cursor: pointer;
-}
-
-button:active {
-  background: #a32828;
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px;
+    background: #8b1f1f;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 #message {
-  height: 25px;
-  margin-top: 20px;
-
-  font-size: 14px;
-  font-weight: bold;
-  letter-spacing: 3px;
+    height: 25px;
+    margin-top: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
-
-.footer {
-  margin-top: 25px;
-
-  color: #555;
-  font-size: 9px;
-  letter-spacing: 2px;
-}
-
 </style>
 </head>
 
-
 <body>
 
-<div class="lock-panel">
+<div class="panel">
 
-  <div class="icon">🔒</div>
+    <div class="lock-icon">🔒</div>
 
-  <h1>SECURITY LOCK</h1>
+    <h1>SECURITY LOCK</h1>
 
-  <div class="status">
-    RESTRICTED ACCESS
-  </div>
+    <div class="subtitle">
+        RESTRICTED ACCESS
+    </div>
 
-  <div class="instruction">
-    ENTER 4-DIGIT ACCESS CODE
-  </div>
+    <div class="inputs">
+        <input maxlength="1" inputmode="numeric">
+        <input maxlength="1" inputmode="numeric">
+        <input maxlength="1" inputmode="numeric">
+        <input maxlength="1" inputmode="numeric">
+    </div>
 
+    <button onclick="checkCode()">
+        UNLOCK
+    </button>
 
-  <div class="code-inputs">
-
-    <input class="digit" maxlength="1" inputmode="numeric">
-    <input class="digit" maxlength="1" inputmode="numeric">
-    <input class="digit" maxlength="1" inputmode="numeric">
-    <input class="digit" maxlength="1" inputmode="numeric">
-
-  </div>
-
-
-  <button onclick="checkCode()">
-    UNLOCK
-  </button>
-
-
-  <div id="message"></div>
-
-
-  <div class="footer">
-    UNAUTHORIZED ACCESS WILL BE LOGGED
-  </div>
+    <div id="message"></div>
 
 </div>
 
-
 <script>
 
-const digits = document.querySelectorAll(".digit");
+const boxes = document.querySelectorAll("input");
 
-digits.forEach((input, index) => {
+boxes.forEach((box, index) => {
 
-  input.addEventListener("input", function() {
+    box.addEventListener("input", function() {
 
-    this.value = this.value.replace(/[^0-9]/g, "");
+        box.value = box.value.replace(/\D/g, "");
 
-    if (this.value && index < digits.length - 1) {
-      digits[index + 1].focus();
-    }
+        if (box.value && index < 3) {
+            boxes[index + 1].focus();
+        }
+    });
 
-  });
+    box.addEventListener("keydown", function(event) {
 
+        if (event.key === "Enter") {
+            checkCode();
+        }
 
-  input.addEventListener("keydown", function(event) {
-
-    if (event.key === "Backspace" &&
-        this.value === "" &&
-        index > 0) {
-
-      digits[index - 1].focus();
-    }
-
-    if (event.key === "Enter") {
-      checkCode();
-    }
-
-  });
-
+        if (
+            event.key === "Backspace" &&
+            box.value === "" &&
+            index > 0
+        ) {
+            boxes[index - 1].focus();
+        }
+    });
 });
-
 
 function checkCode() {
 
-  let code = "";
+    let code = "";
 
-  digits.forEach(input => {
-    code += input.value;
-  });
-
-
-  const message = document.getElementById("message");
-
-
-  if (code === "2199") {
-
-    message.style.color = "#55ff77";
-    message.innerHTML = "ACCESS GRANTED";
-
-    digits.forEach(input => {
-      input.style.borderColor = "#55ff77";
+    boxes.forEach(box => {
+        code += box.value;
     });
 
+    const message = document.getElementById("message");
 
-    setTimeout(function() {
+    if (code === "2199") {
 
-      window.location.href = "message4.html";
+        message.style.color = "#55ff77";
+        message.textContent = "ACCESS GRANTED";
 
-    }, 1200);
+        setTimeout(function() {
+            window.location.href = "message4.html";
+        }, 1000);
 
+    } else {
 
-  } else {
+        message.style.color = "#ff4444";
+        message.textContent = "ACCESS DENIED";
 
-    message.style.color = "#ff3333";
-    message.innerHTML = "ACCESS DENIED";
+        boxes.forEach(box => {
+            box.value = "";
+        });
 
-    digits.forEach(input => {
-
-      input.value = "";
-      input.style.borderColor = "#ff3333";
-
-    });
-
-
-    setTimeout(function() {
-
-      digits.forEach(input => {
-        input.style.borderColor = "#4a4f55";
-      });
-
-      message.innerHTML = "";
-
-      digits[0].focus();
-
-    }, 1200);
-
-  }
-
+        boxes[0].focus();
+    }
 }
 
-digits[0].focus();
+boxes[0].focus();
 
 </script>
 
