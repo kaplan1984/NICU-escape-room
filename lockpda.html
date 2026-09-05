@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Security Lock</title>
+
+<style>
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #05080b;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.panel {
+    width: 320px;
+    padding: 35px 25px;
+    background: #11161a;
+    border: 2px solid #444;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 0 30px black;
+}
+
+.lock-icon {
+    font-size: 45px;
+}
+
+h1 {
+    letter-spacing: 4px;
+    margin: 15px 0 5px;
+}
+
+.subtitle {
+    color: #e33;
+    letter-spacing: 2px;
+    font-size: 12px;
+    margin-bottom: 30px;
+}
+
+.inputs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+input {
+    width: 55px;
+    height: 65px;
+    background: #050607;
+    color: white;
+    border: 2px solid #666;
+    border-radius: 7px;
+    font-size: 32px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+input:focus {
+    border-color: #e33;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px;
+    background: #8b1f1f;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#message {
+    height: 25px;
+    margin-top: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.success-screen {
+    display: none;
+    text-align: center;
+    padding: 30px;
+}
+
+.heart-box {
+    font-size: 90px;
+    margin-bottom: 15px;
+}
+
+.success-screen h2 {
+    font-size: 32px;
+    direction: rtl;
+    margin: 10px 0;
+}
+
+.granted {
+    color: #55ff77;
+    letter-spacing: 3px;
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="panel" id="lockPanel">
+
+    <div class="lock-icon">🔒</div>
+
+    <h1>SECURITY LOCK</h1>
+
+    <div class="subtitle">
+        RESTRICTED ACCESS
+    </div>
+
+    <div class="inputs">
+        <input maxlength="1">
+        <input maxlength="1">
+        <input maxlength="1">
+    </div>
+
+    <button onclick="checkCode()">
+        UNLOCK
+    </button>
+
+    <div id="message"></div>
+
+</div>
+
+<div class="success-screen" id="successScreen">
+
+    <div class="heart-box">💝</div>
+
+    <div class="granted">
+        ACCESS GRANTED
+    </div>
+
+    <h2>ניתן לפתוח את הקופסא</h2>
+
+</div>
+
+<script>
+
+const boxes = document.querySelectorAll("input");
+
+boxes.forEach((box, index) => {
+
+    box.addEventListener("input", function() {
+
+        box.value = box.value
+            .replace(/[^a-zA-Z]/g, "")
+            .toUpperCase();
+
+        if (box.value && index < 2) {
+            boxes[index + 1].focus();
+        }
+    });
+
+    box.addEventListener("keydown", function(event) {
+
+        if (event.key === "Enter") {
+            checkCode();
+        }
+
+        if (
+            event.key === "Backspace" &&
+            box.value === "" &&
+            index > 0
+        ) {
+            boxes[index - 1].focus();
+        }
+    });
+});
+
+function checkCode() {
+
+    let code = "";
+
+    boxes.forEach(box => {
+        code += box.value.toUpperCase();
+    });
+
+    const message = document.getElementById("message");
+
+    if (code === "PDA") {
+
+        document.getElementById("lockPanel").style.display = "none";
+        document.getElementById("successScreen").style.display = "block";
+
+    } else {
+
+        message.style.color = "#ff4444";
+        message.textContent = "ACCESS DENIED";
+
+        boxes.forEach(box => {
+            box.value = "";
+        });
+
+        boxes[0].focus();
+    }
+}
+
+boxes[0].focus();
+
+</script>
+
+</body>
+</html>
