@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Incoming Transmission</title>
+
+<style>
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #05080b;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 700px;
+    text-align: center;
+}
+
+h1 {
+    letter-spacing: 4px;
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.warning {
+    color: #e33;
+    letter-spacing: 3px;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+video {
+    width: 100%;
+    max-height: 70vh;
+    background: black;
+    border: 2px solid #333;
+}
+
+.footer {
+    margin-top: 20px;
+    color: #777;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>INCOMING TRANSMISSION</h1>
+
+    <div class="warning">
+        CONNECTION UNSTABLE
+    </div>
+
+    <video controls playsinline>
+        <source src="IRIS.mp4" type="video/mp4">
+        Your browser does not support video playback.
+    </video>
+
+    <div class="footer">
+        UNAUTHORIZED ACCESS DETECTED
+    </div>
+
+</div>
+
+</body>
+</html>
